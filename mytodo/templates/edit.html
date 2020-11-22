@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mt-3"> Edit your ToDo </h1>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-12">
+
+            <form action="/todo_edit/{{todo_obj.id}}"  class="form-inline justify-content-center" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+    
+                {{form.todo_text}}
+                 
+                  <input type="submit"  class=" mx-2 btn btn-danger" name=""  value="SAVE" id="">
+
+                </div>
+            
+            
+                  
+                  
+                
+                </form>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

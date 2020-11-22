@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mt-3"> Add your ToDo </h1>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            <form action="/todo_add/"  class="form-inline justify-content-center" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+    
+                {{form.todo_text}}
+                 
+                  <input type="submit"  class=" mx-2 btn btn-danger" name=""  value="ADD" id="">
+
+                </div>
+            
+            
+                  
+                  
+                
+                </form>
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="row mt-5 ">
+        <div class="col-12">
+            <table class="table">
+                <tbody>
+                    {% for todo in obj_list %}
+                    <tr>
+                        
+                        <td>
+                       <p> {{todo.title}}</p>
+                       <p class="text-muted ">
+                          Created on: {{todo.date_added}}
+                       </p>
+                       <p class="text-muted ">Updated on: {{todo.date_updated}}</p>
+                    </td>
+                        
+                        <td class="text-right">
+
+                            <form action="/todo_delete/{{todo.id}}" method="POST">
+                                {% csrf_token %}
+
+                        <button class="btn btn-danger">DELETE</button>
+                    </form>
+                    </td>
+                
+                    <td>
+                        <a href="/todo_edit/{{todo.id}}" class="btn btn-info">EDIT</a>
+                    </td>
+                    </tr>
+                </tbody>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}
